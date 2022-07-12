@@ -6,7 +6,7 @@ export default function HomePage() {
   const [posts, setPosts] = useState<any[]>();
   async function refresh() {
     try {
-      const res = await fetch('/api/posts');
+      const res = await fetch('/api/posts',);
       if (res.status !== 200) {
         console.error(await res.text());
       }
@@ -21,6 +21,7 @@ export default function HomePage() {
   }, []);
   return (
     <div>
+      Hello umi4
       {!posts && <p>Loading...</p>}
       {posts && <div>
         {posts.map(post => <div key={post.id}>

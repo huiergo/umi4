@@ -53424,7 +53424,7 @@ async function posts_default(req, res) {
     case "GET":
       prisma = new import_client.PrismaClient();
       const allPosts = await prisma.post.findMany({ include: { author: true } });
-      res.status(200).json([{ authorId: 111 }]);
+      res.status(200).json(allPosts);
       await prisma.$disconnect();
       break;
     case "POST":
