@@ -6,7 +6,13 @@ export default function HomePage() {
   const [posts, setPosts] = useState<any[]>();
   async function refresh() {
     try {
-      const res = await fetch('/api/posts',);
+      const res = await fetch('/api/posts',{
+        method: 'POST', // or 'PUT'
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // body: JSON.stringify(data),
+      });
       if (res.status !== 200) {
         console.error(await res.text());
       }
@@ -23,13 +29,14 @@ export default function HomePage() {
     <div>
       Hello umi4
       {!posts && <p>Loading...</p>}
-      {posts && <div>
+      {JSON.stringify(posts)}
+      {/* {posts && <div>
         {posts.map(post => <div key={post.id}>
           <div onClick={() => history.push(`/posts/${post.id}`)}>
             <p>{post.title}</p>
           </div>
         </div>)}
-      </div>}
+      </div>} */}
     </div>
   );
 }
